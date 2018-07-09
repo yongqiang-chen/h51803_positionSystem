@@ -1,0 +1,14 @@
+.title_box{
+	width: 90%;
+	height: 50px;
+	margin: 0 auto;
+}
+.title_box h3{
+	float: left;
+	font-size: 18px;
+	color: #ccc;
+}
+.title_box .btn-primary{
+	float: right;
+	margin-top: 10px;
+}

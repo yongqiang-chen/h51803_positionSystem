@@ -1,5 +1,5 @@
 function Position(){
-	
+	this.createAddPositionModal();
 }
 
 $.extend(Position.prototype, {
@@ -8,6 +8,9 @@ $.extend(Position.prototype, {
 		new Header();
 		//让“职位”导航选中
 		$("#position-nav ul:first li:last").addClass("active").siblings().removeClass("active");
+	},
+	createAddPositionModal : function(){
+		new AddPositionModal();
 	}
 });
 
