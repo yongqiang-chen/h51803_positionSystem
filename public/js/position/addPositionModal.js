@@ -13,7 +13,7 @@ AddPositionModal.template = `<div class="modal fade" id="AddPositionModal">
 	      	<div class="alert alert-danger hide add_pos_error" role="alert">职位添加失败,请稍后重试...</div>
 	        <form class="add_pos_form">
 	        	<div class="form-group">
-				    <label for="positionLogo">职位名称</label>
+				    <label for="positionLogo">logo</label>
 				    <input type="file" class="form-control" id="positionLogo" name="logo" >
 				</div>
 	        	<div class="form-group">
@@ -44,7 +44,7 @@ AddPositionModal.template = `<div class="modal fade" id="AddPositionModal">
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-	        <button type="button" class="btn btn-primary">登录</button>
+	        <button type="button" class="btn btn-primary btn_add_pos">添加</button>
 	      </div>
 	    </div>
 	  </div>

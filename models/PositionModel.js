@@ -6,7 +6,11 @@ mongoose.connect("mongodb://localhost:27017/position_project");
 const schema = mongoose.Schema({
 	position : String,
 	company : String,
-	salary : Number
+	salary : Number,
+	logo : String,
+	address : String,
+	experience : String,
+	type : String
 });
 //生成数据库中创建文档的模型
 const Position = mongoose.model("position", schema);
@@ -25,6 +29,16 @@ const PositionModel = {
 			
 			success(data);
 		});
+	},
+	//按页查询
+	findByPage :function(pageIndex, success, error){
+		//pageSize 中保存每页显示文档数量
+		const pageSize = 5;
+		//跳过(pageIndex - 1)*pageSize条文档数据
+		Position.find()
+				.limit(pageSize)
+				.skip((pageIndex - 1) * pageSize)
+				.then(success, error);
 	}
 }
 
