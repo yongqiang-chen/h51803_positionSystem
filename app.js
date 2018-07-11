@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cookieSession = require("cookie-session");
 
 //用户路由
 var usersRouter = require('./routes/users');
@@ -21,6 +22,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//使用cookie-session中间件
+app.use(cookieSession({
+	name:"session",
+	secret:"sdafsdfwerfgfd",
+	maxAge: 15*60*1000
+}));
 
 app.use('/api/users', usersRouter);
 app.use("/api/positions", positionsRouter);

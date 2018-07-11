@@ -37,8 +37,8 @@ function save(userInfo, success, error){
 }
 
 //查找用户数据
-function find(){
-
+function find(userinfo, success, error){
+	User.find(userinfo).then(success, error);
 }
 
 module.exports = {save, find};

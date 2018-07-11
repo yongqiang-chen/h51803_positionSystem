@@ -6,15 +6,17 @@ router.get("/", function(req, res, next){
 	res.send("respond with a resource");
 });
 
-router.get("/login", function(req, res, next){
-	res.send("login");
-});
+//用户是否登录的路由
+router.get("/check", userController.checkLogin);
+
+//用户登录路由
+router.post("/login", userController.login);
+
+router.get("/logout", userController.logout);
 
 //用户注册路由
 router.post('/register', userController.register);
 
-router.get("/check", function(req, res, next){
-	res.send("check");
-});
+
 
 module.exports = router;

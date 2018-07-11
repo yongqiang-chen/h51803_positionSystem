@@ -22,7 +22,7 @@
 	</div>
 
 	<div class="container">
-		<table class="table table-bordered table-hover">
+		<table class="table table-bordered table-hover pos_tab">
 		  <thead>
 		  	<tr>
 		  		<th>序号</th>
@@ -37,36 +37,41 @@
 		  	</tr>
 		  </thead>
 		  <tbody>
-		  	<tr>
-		  		<td>1</td>
-		  		<td><img src="#"></td>
-		  		<td>高级前端工程师</td>
-		  		<td>阿里巴巴</td>
-		  		<td>3年</td>
-		  		<td>项目经理</td>
-		  		<td>成都</td>
-		  		<td>12000</td>
-		  		<td><a href="#">修改</a></td>
-		  		<td><a href="#">删除</a></td>
-		  	</tr>
-		  	<tr>
-		  		<td>2</td>
-		  		<td><img src="#"></td>
-		  		<td>H5前端工程师</td>
-		  		<td>爱奇艺</td>
-		  		<td>2年</td>
-		  		<td>切图仔</td>
-		  		<td>上海</td>
-		  		<td>6000</td>
-		  		<td><a href="#">修改</a></td>
-		  		<td><a href="#">删除</a></td>
-		  	</tr>
+		  	
 		  </tbody>
 		</table>
+
+		<nav aria-label="Page navigation">
+		  <ul class="pagination">
+		    <li><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		  </ul>
+		</nav>
 	</div>
+
+	<script type="text/html" id="position_list_temp">
+		{{each list pos index}}
+		<tr>
+	  		<td>{{index + 1}}</td>
+	  		<td><img src="{{pos.logo}}"></td>
+	  		<td>{{pos.position}}</td>
+	  		<td>{{pos.company}}</td>
+	  		<td>{{pos.experience}}</td>
+	  		<td>{{pos.type}}</td>
+	  		<td>{{pos.address}}</td>
+	  		<td>{{pos.salary}}</td>
+	  		<td><a href="#">修改</a></td>
+	  		<td><a href="#">删除</a></td>
+	  	</tr>
+	  	{{/each}}
+	</script>
 	
 	<script src="/lib/jquery/jquery-1.12.4.min.js"></script>
 	<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/lib/artTemplate/template-web.js"></script>
 	<script src="/js/position/addPositionModal.js"></script>
 	<script src="/js/common/LoginModal.js"></script>
 	<script src="/js/common/RegisterModal.js"></script>

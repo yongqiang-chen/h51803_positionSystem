@@ -2,9 +2,24 @@ function Position(){
 	this.loadHeader();
 	this.createAddPositionModal();
 	this.addListener();
+
+	
+	this.check();
 }
 
 $.extend(Position.prototype, {
+	//判断用户是否登录，如果未登录，则跳转到首页
+	check: function(){
+		$.get("/api/users/check", (data) => {
+			if(data.res_code === 0){//登录失败
+				location = "/index.html";
+			}else{
+				//默认查询第一页职位数据
+				this.listByPage(1);
+			}
+		}, "json")
+	},
+
 	loadHeader : function(){
 		//创建头部对象，加载DOM结构
 		new Header();
@@ -18,6 +33,14 @@ $.extend(Position.prototype, {
 	addListener : function(){
 		//添加职位
 		$(".btn_add_pos").on("click", this.handleAddPosition);
+		//点击页码查询该页信息
+		const that = this;
+		$(".pagination").on("click", "li", function(){
+			//获取当前点击页码
+			const currentPage = $(this).find("a").text();
+			//调用listByPage()查询
+			that.listByPage(currentPage);
+		});
 	},
 	//处理添加职位的方法
 	handleAddPosition : function(){
@@ -49,6 +72,19 @@ $.extend(Position.prototype, {
 				$(".add_pos_error").removeClass("hide");
 			}
 		}, "json");*/
+	},
+	//按页查询职位数据并渲染
+	listByPage : function(currentPage){
+		//如果没有页码，默认查询第一页
+		currentPage = currentPage || 1;
+		//ajax查询
+		$.get("/api/positions/list", {pageIndex : currentPage}, function(data){
+			if(data.res_code === 1){
+				//利用artTemplate模板引擎
+				const html = template("position_list_temp", {list: data.res_body});
+				$(".pos_tab tbody").html(html);
+			}
+		}, "json");
 	}
 });
 
