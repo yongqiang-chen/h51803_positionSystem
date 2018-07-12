@@ -27,5 +27,11 @@ router.post("/add", upload.single("logo"), PositionController.add);
 
 //路由 ：查询职位
 router.get("/list", PositionController.list);
+//路由 ：删除职位
+router.get("/delete", PositionController.delete);
+//路由 ：根据id找职位
+router.post("/find", PositionController.find);
+//实现文件跟新（修改）
+router.post("/update", upload.single("logo"), PositionController.update);
 
 module.exports = router;

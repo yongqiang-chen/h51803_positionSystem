@@ -39,6 +39,29 @@ const PositionModel = {
 				.limit(pageSize)
 				.skip((pageIndex - 1) * pageSize)
 				.then(success, error);
+	},
+	//按页删除
+	deleteById : function(id, success, error){
+		Position.deleteOne({_id:id})
+				.then(success, error);
+	},
+	//按id查询
+	findById : function(id, success, error){
+		Position.find({_id:id})
+				.then(success, error)
+	},
+	update : function(positionInfo, success, error){
+		const id = positionInfo.id,
+				position = positionInfo.position,
+				company = positionInfo.company,
+				salary = positionInfo.salary,
+				address = positionInfo.address,
+				experience = positionInfo.experience,
+				type = positionInfo.type,
+				logo = positionInfo.logo;
+		// console.log(id,position,company,salary,address,experience,type);
+		Position.where({_id:id}).update({id,position,company,salary,address,experience,type,logo}).then(success,error);
+		
 	}
 }
 

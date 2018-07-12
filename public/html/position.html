@@ -52,19 +52,71 @@
 		</nav>
 	</div>
 
+	<!-- 修改数据模态框 -->
+	<div class="modal fade" id="modifyPositionModal">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="modifyModalLabel">修改职位信息</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<div class="alert alert-danger hide modify_pos_error" role="alert">职位修改失败,请稍后重试...</div>
+	        <form class="modify_pos_form">
+	        	<div class="id hide">
+	        		<input type="text" id="modifyPositionId" name="id">
+	        	</div>
+	        	<div class="form-group">
+				    <label for="modifyPositionLogo">logo</label>
+				    <input type="file" class="form-control" id="modifyPositionLogo" name="logo" >
+				</div>
+	        	<div class="form-group">
+				    <label for="modifyPositionName">职位名称</label>
+				    <input type="text" class="form-control" id="modifyPositionName" name="position" placeholder="输入职位名称">
+				</div>
+				<div class="form-group">
+				    <label for="modifyPositionCompany">公司名称</label>
+				    <input type="text" class="form-control" id="modifyPositionCompany" name="company" placeholder="输入公司名称">
+				</div> 
+				<div class="form-group">
+				    <label for="modifyPositionSalary">岗位薪资</label>
+				    <input type="text" class="form-control" id="modifyPositionSalary" name="salary" placeholder="输入岗位薪资">
+				</div> 
+				<div class="form-group">
+				    <label for="modifyPositionAddress">工作地点</label>
+				    <input type="text" class="form-control" id="modifyPositionAddress" name="address" placeholder="输入工作地点">
+				</div> 
+				<div class="form-group">
+				    <label for="modifyPositionExper">工作经验</label>
+				    <input type="text" class="form-control" id="modifyPositionExper" name="experience" placeholder="输入工作经验">
+				</div> 
+				<div class="form-group">
+				    <label for="modifyPositionType">职位类型</label>
+				    <input type="text" class="form-control" id="modifyPositionType" name="type" placeholder="输入职位类型">
+				</div> 
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	        <button type="button" class="btn btn-primary btn_modify_pos">修改</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
 	<script type="text/html" id="position_list_temp">
 		{{each list pos index}}
 		<tr>
 	  		<td>{{index + 1}}</td>
 	  		<td><img src="{{pos.logo}}"></td>
-	  		<td>{{pos.position}}</td>
+	  		<td class="pos_name">{{pos.position}}</td>
 	  		<td>{{pos.company}}</td>
 	  		<td>{{pos.experience}}</td>
 	  		<td>{{pos.type}}</td>
 	  		<td>{{pos.address}}</td>
 	  		<td>{{pos.salary}}</td>
-	  		<td><a href="#">修改</a></td>
-	  		<td><a href="#">删除</a></td>
+	  		<td><a href="#" class="modify" data-id="{{pos._id}}" data-toggle="modal" data-target="#modifyPositionModal">修改</a></td>
+	  		<td><a href="#" class="delete" data-id="{{pos._id}}">删除</a></td>
 	  	</tr>
 	  	{{/each}}
 	</script>
