@@ -48,7 +48,7 @@ $.extend(Position.prototype, {
 			const logo = logo_src.slice(logo_src.indexOf("/upload"));
 			// console.log(logo);
 			const _id = src.dataset.id;
-			// console.log(_id);
+			//console.log(_id);
 			that.deleteById({_id, logo});
 		});
 		$(".pos_tab").on("click", ".modify", function(e){
