@@ -122,6 +122,11 @@ $.extend(Position.prototype, {
 			// console.log(data);
 			if(data.res_code === 1){
 				const infos = data.res_body[0];
+				// console.log(infos.logo);
+				const historyLogoName = infos.logo.slice(1);
+				// console.log(historyLogoName);
+
+				$("#historyLogo").val(historyLogoName);
 				$("#modifyPositionName").val(infos.position);
 				$("#modifyPositionCompany").val(infos.company);
 				$("#modifyPositionSalary").val(infos.salary);

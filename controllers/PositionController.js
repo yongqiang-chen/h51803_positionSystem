@@ -1,5 +1,6 @@
 const PositionModel = require("../models/PositionModel");
 const fs = require('fs');
+const path=require("path");
 
 const PositionController = {
 	//添加职位信息
@@ -63,7 +64,11 @@ const PositionController = {
 		const {id, logo} = req.query;
 		// console.log(id,logo);
 		// 删除文件
-		fs.unlink("D:/wamp/www/day_06/project/public" + logo, (err)=>{
+		//fs.unlink("D:/wamp/www/day_06/project/public" + logo, (err)=>{
+		// console.log(__dirname);
+		const p = path.resolve(__dirname, "../public", logo.slice(1));
+		// console.log(p);
+		fs.unlink(p, (err)=>{
 			if (err) {
 				console.log(err);
 				return;
@@ -104,7 +109,23 @@ const PositionController = {
 		});
 	},
 	update : function(req, res, next){
-		const {position, company, salary, address, experience, type, id} = req.body;
+		const {position, company, salary, address, experience, type, id, historyLogo} = req.body;
+		
+		//删除文件里的历史图片
+		// console.log(historyLogo);
+		const p = path.resolve(__dirname, "../public", historyLogo);
+		// console.log(p);
+		fs.unlink(p, (err)=>{
+			if (err) {
+				console.log(err);
+				return;
+			}
+
+			console.log("删除成功...");
+		});
+
+
+		//更新数据库信息
 		let logo = "";
 		if (req.file) //有上传的文件
 			logo = "/upload/" + req.file.filename;
