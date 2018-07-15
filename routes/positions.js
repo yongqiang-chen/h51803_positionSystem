@@ -24,8 +24,9 @@ var upload = multer({ storage: storage })
 //实现文件上传
 router.post("/add", upload.single("logo"), PositionController.add);
 
-
-//路由 ：查询职位
+//路由：查询所有职位
+router.get("/query", PositionController.query);
+//路由 ：查询当前页职位
 router.get("/list", PositionController.list);
 //路由 ：删除职位
 router.get("/delete", PositionController.delete);

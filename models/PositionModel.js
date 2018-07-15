@@ -30,6 +30,10 @@ const PositionModel = {
 			success(data);
 		});
 	},
+	//查询所有职位数据
+	query : function(success, error){
+		Position.find().then(success, error);
+	},
 	//按页查询
 	findByPage :function(pageIndex, success, error){
 		//pageSize 中保存每页显示文档数量

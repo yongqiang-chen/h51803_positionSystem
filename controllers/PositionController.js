@@ -37,7 +37,23 @@ const PositionController = {
 		//res.json({position, company, salary});
 	},
 
-	//查询职位
+	//查询所有职位信息
+	query : function(req, res, next){
+		PositionModel.query((data)=>{
+			res.json({
+				res_code : 1,
+				res_error : "",
+				res_body: data
+			});
+		}, (err)=>{
+			res.json({
+				res_code: 0,
+				res_error : err,
+				res_body : {}
+			});
+		});
+	},
+	//查询当前页职位
 	list : function(req, res, next){
 		//从请求中获取查询的页码
 		const {pageIndex} = req.query;

@@ -1,6 +1,7 @@
 function Position(){
 	this.loadHeader();
 	this.createAddPositionModal();
+	this.byDataLoadPage();
 	this.addListener();
 
 	
@@ -91,6 +92,22 @@ $.extend(Position.prototype, {
 			}
 		}, "json");*/
 	},
+	
+	//查询数据条数来渲染页码
+	byDataLoadPage : function(){
+		$.get("/api/positions/query", function(data){
+			const len = data.res_body.length;
+			const n = Math.ceil(len/5);
+			const html = `<li><a href="#">1</a></li>`;
+			//console.log(data);
+			//console.log(len);
+			console.log(n);
+			for(var i=1; i<=n; i++){
+				
+			}
+		});
+	},
+	
 	//按页查询职位数据并渲染
 	listByPage : function(currentPage){
 		//如果没有页码，默认查询第一页
