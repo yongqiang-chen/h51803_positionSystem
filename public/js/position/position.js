@@ -98,12 +98,14 @@ $.extend(Position.prototype, {
 		$.get("/api/positions/query", function(data){
 			const len = data.res_body.length;
 			const n = Math.ceil(len/5);
-			const html = `<li><a href="#">1</a></li>`;
+			var i = 1;
+			
 			//console.log(data);
 			//console.log(len);
 			console.log(n);
-			for(var i=1; i<=n; i++){
-				
+			for(i; i<=n; i++){
+				const html = `<li><a href="#">${i}</a></li>`;
+				$(".pagination").append(html);
 			}
 		});
 	},
